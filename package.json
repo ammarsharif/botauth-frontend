@@ -1,0 +1,18 @@
+{
+  "name": "botauth-manager",
+  "version": "1.0.0",
+  "description": "Chrome extension to manage bot authentication cookies",
+  "scripts": {
+    "build": "bash build.sh",
+    "build:win": "build.bat",
+    "build:sh": "bash build.sh",
+    "typecheck": "tsc --noEmit",
+    "watch": "tsc --noEmit --watch",
+    "icons": "node scripts/generate-icons.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/chrome": "^0.0.268",
+    "esbuild": "^0.21.0"
+  }
+}

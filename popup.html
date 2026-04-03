@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BotAuth Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- HEADER -->
+      <header id="header">
+        <div id="logo">
+          <img src="icons/logo.png" alt="BotAuth Logo" class="logo-img" />
+          <span>BotAuth Manager</span>
+        </div>
+        <button id="settings-btn" title="Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </header>
+
+      <!-- MAIN VIEWS -->
+
+      <!-- Loading -->
+      <div id="view-loading" class="view">
+        <div class="spinner"></div>
+        <p>Detecting platform...</p>
+      </div>
+
+      <!-- Unsupported platform -->
+      <div id="view-unsupported" class="view hidden">
+        <div class="unsupported-icon">🚫</div>
+        <h2>Not Supported</h2>
+        <p>
+          Navigate to Instagram, Facebook, LinkedIn, or Twitter/X to use this
+          extension.
+        </p>
+      </div>
+
+      <!-- Cookies view -->
+      <div id="view-cookies" class="view hidden">
+        <div id="platform-badge"></div>
+        <div id="fetch-timestamp" class="fetch-timestamp hidden"></div>
+        <div id="cookie-list"></div>
+        <div id="missing-warning" class="hidden"></div>
+        <!-- Copy preview — shows exactly what the Copy button will put on clipboard -->
+        <div id="copy-preview" class="hidden">
+          <div id="copy-preview-label">
+            <span id="copy-preview-format"></span>
+            <span id="copy-preview-copied" class="hidden">✅ Copied!</span>
+          </div>
+          <pre id="copy-preview-text"></pre>
+        </div>
+        <div id="action-buttons">
+          <button id="btn-copy" class="btn btn-secondary">📋 Copy All</button>
+          <button id="btn-replace" class="btn btn-primary">
+            🔄 Replace in DB
+          </button>
+        </div>
+        <div id="refresh-row">
+          <button id="btn-refresh" class="refresh-link">🔃 Refresh</button>
+        </div>
+        <div id="status-message" class="hidden"></div>
+      </div>
+
+      <!-- Settings view -->
+      <div id="view-settings" class="view hidden">
+        <h2>⚙️ Settings</h2>
+        <label for="input-baseUrl">Backend URL</label>
+        <input
+          type="text"
+          id="input-baseUrl"
+          placeholder="http://localhost:3001"
+        />
+        <label for="input-apiKey">API Key (optional)</label>
+        <input type="text" id="input-apiKey" placeholder="your-api-key" />
+        <div class="settings-actions">
+          <button id="btn-save-settings" class="btn btn-primary">Save</button>
+          <button id="btn-back" class="btn btn-secondary">← Back</button>
+        </div>
+      </div>
+    </div>
+    <!-- Bundled by esbuild as IIFE — no type="module" needed -->
+    <script src="dist/popup.js"></script>
+  </body>
+</html>
