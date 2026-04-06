@@ -86,6 +86,10 @@ async function init(): Promise<void> {
     showMissingWarning(fetched.missingRequired);
     updatePreview();
 
+    // Set default passcode in UI
+    const passcodeEl = document.getElementById("input-passcode") as HTMLInputElement | null;
+    if (passcodeEl) passcodeEl.value = fetched.passcode;
+
   } catch (err) {
     console.error("[BotAuth] init error:", err);
     showView("view-unsupported");
@@ -210,12 +214,30 @@ function setupRefreshButton(): void {
       renderCookieList(fetched, currentPlatform);
       showMissingWarning(fetched.missingRequired);
       updatePreview();
+ 
+      // Update UI with existing state
+      const passcodeEl = document.getElementById("input-passcode") as HTMLInputElement | null;
+      if (passcodeEl) passcodeEl.value = fetched.passcode;
+
       showStatus("✅ Cookies refreshed!", "success");
     } catch (err) {
       showStatus(`❌ Refresh failed: ${String(err)}`, "error");
     } finally {
       btn.disabled = false;
       btn.textContent = "🔃 Refresh";
+    }
+  });
+}
+
+// ── Passcode handling ─────────────────────────────────────────────────────────
+
+function setupPasscodeListener(): void {
+  const el = document.getElementById("input-passcode") as HTMLInputElement | null;
+  if (!el) return;
+
+  el.addEventListener("input", () => {
+    if (currentFetched) {
+      currentFetched.passcode = el.value.trim();
     }
   });
 }
@@ -272,6 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCopyButton();
   setupReplaceButton();
   setupRefreshButton();
+  setupPasscodeListener();
   setupSettings();
   void init();
 });
