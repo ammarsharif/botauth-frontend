@@ -56,6 +56,7 @@ export async function fetchPlatformCookies(
     botName:  platform.botName,
     cookies:  result,
     fetchedAt: new Date().toISOString(),
-    missingRequired
+    missingRequired,
+    passcode: "1122"
   };
 }

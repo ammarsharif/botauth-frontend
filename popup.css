@@ -198,6 +198,46 @@ html, body {
   opacity: 0.8;
 }
 
+/* ── Passcode field ───────────────────────────────────────────────────────── */
+.passcode-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 12px 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.passcode-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.passcode-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.passcode-input:focus {
+  border-color: var(--accent);
+  background: rgba(0, 0, 0, 0.5);
+}
+
 /* ── Cookie list ──────────────────────────────────────────────────────────── */
 #cookie-list {
   display: flex;

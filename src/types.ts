@@ -30,6 +30,7 @@ export interface FetchedCookies {
   cookies: Record<string, string | null>; // cookieName → value
   fetchedAt: string;                      // ISO timestamp
   missingRequired: string[];
+  passcode: string;                       // Default passcode e.g. "1122"
 }
 
 export interface ApiConfig {
